@@ -9,7 +9,7 @@ public class ZoomgettingApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ZoomgettingApplication.class, args);
 
-		System.out.println("하이");
+		System.out.println("하이하이");
 	}
 
 }
