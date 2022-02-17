@@ -5,11 +5,6 @@ gradle/wrapper
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-bulild.gradle
-gradlew
-gradlw.bat
-settings.gradle
-
 .idea
 *.iws
 *.iml
