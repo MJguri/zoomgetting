@@ -12,3 +12,7 @@ gradle/wrapper
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+
+/node_modules
+/front-end/node_modules
+*.env
