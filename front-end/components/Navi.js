@@ -1,13 +1,10 @@
 import {Fragment} from 'react'
 import {Menu, Transition} from '@headlessui/react'
 import {MenuIcon, XIcon} from '@heroicons/react/outline'
+import {UserIcon} from '@heroicons/react/solid'
 
-const user = {
-    name: 'Tom Cook',
-    email: 'tom@example.com',
-    imageUrl:
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
+
+
 const navigation = [
     {name: '소개', href: '#', current: true},
     {name: '사용방법', href: '#', current: false},
@@ -17,7 +14,7 @@ const navigation = [
 ]
 const userNavigation = [
     {name: '프로필', href: '#'},
-    {name: '로그인', href: '#'},
+    {name: '로그인', href: '/user/login'},
     // {name: 'Sign out', href: '#'},
 ]
 
@@ -89,8 +86,7 @@ export default function Navi() {
                                                     <Menu.Button
                                                         className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                                                         <span className="sr-only">Open user menu</span>
-                                                        <img className="h-8 w-8 rounded-full" src={user.imageUrl}
-                                                             alt=""/>
+                                                        <UserIcon className="h-8 w-8 fill-gray-300"/>
                                                     </Menu.Button>
                                                 </div>
                                                 <Transition
@@ -182,21 +178,6 @@ export default function Navi() {
                         </>
                     )}
                 </Menu>
-
-                <header className="bg-white shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-                    </div>
-                </header>
-                <main>
-                    <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                        {/* Replace with your content */}
-                        <div className="px-4 py-6 sm:px-0">
-                            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"/>
-                        </div>
-                        {/* /End replace */}
-                    </div>
-                </main>
             </div>
         </>
     )
