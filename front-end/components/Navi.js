@@ -8,7 +8,7 @@ import {UserIcon} from '@heroicons/react/solid'
 const navigation = [
     {name: '소개', href: '#', current: true},
     {name: '사용방법', href: '#', current: false},
-    {name: '서비스 이용하기', href: '#', current: false},
+    {name: '서비스 이용하기', href: '/meeting/lobby', current: false},
     // {name: 'Calendar', href: '#', current: false},
     // {name: 'Reports', href: '#', current: false},
 ]
