@@ -16,10 +16,7 @@ public class MemberController {
     private MainService service;
 
     @GetMapping("memberList")
-    public String memberList(Model model) {
-
-        List<Member> list = service.selectAllMember();
-        model.addAttribute("memberList", list);
+    public String memberList() {
 
         return "memberList";
     }
