@@ -15,23 +15,6 @@
   <img src="img/kakao_login_medium_narrow.png"/>
   <img th:src="@{img/kakao_login_medium_narrow.png}"/>
   <img th:src="@{/img/kakao_login_medium_narrow.png}"/>
-<table>
-    <tr>
-        <th>memberNum</th>
-        <th>memberId</th>
-        <th>memberPassword</th>
-        <th>memberName</th>
-        <th>memberMail</th>
-        <th>memberPhone</th>
-    </tr>
-    <tr th:each="list :${memberList}">
-        <td th:text="${list.memberNum}"></td>
-        <td th:text="${list.memberId}"></td>
-        <td th:text="${list.memberPassword}"></td>
-        <td th:text="${list.memberName}"></td>
-        <td th:text="${list.memberMail}"></td>
-        <td th:text="${list.memberPhone}"></td>
-    </tr>
 
     <p id="token-result"></p>
 
@@ -47,7 +30,7 @@
     <script type="text/javascript">
         function loginWithKakao() {
             Kakao.Auth.login({
-                redirectUri: 'http://192.168.35.109:8085/kakaoLogin',
+                redirectUri: 'http://192.168.55.99:8085/kakaoLogin',
                 success: function(authObj) {
                     alert(JSON.stringify(authObj))
                 },

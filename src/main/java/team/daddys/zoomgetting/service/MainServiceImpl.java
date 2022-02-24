@@ -3,6 +3,7 @@ package team.daddys.zoomgetting.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import team.daddys.zoomgetting.domain.Member;
+import team.daddys.zoomgetting.domain.TestGre;
 import team.daddys.zoomgetting.mapper.MainMapper;
 
 import java.util.List;
@@ -16,5 +17,10 @@ public class MainServiceImpl implements MainService{
     @Override
     public List<Member> selectAllMember() {
         return mapper.selectAll();
+    }
+
+    @Override
+    public List<TestGre> selectPostgreAll() {
+        return mapper.selectPostgreAll();
     }
 }
