@@ -10,6 +10,7 @@ export default function lobby() {
     const myFace = useRef();
     const camerasSelect = useRef();
     const call = useRef();
+    const peerFace = useRef();
     const [welcomeFlag, setWelcomeFlag] = useState(true);
     const [welcomeInput, setWelcomeInput] = useState("")
     const [mute, setMute] = useState(false)
@@ -170,6 +171,7 @@ export default function lobby() {
         });
         myPeerConnection.addEventListener("icecandidate", handleIce);
         myPeerConnection.addEventListener("addstream", handleAddStream);
+        console.log("makeconnextion, "+ myStream )
         myStream
             .getTracks()
             .forEach((track) => myPeerConnection.addTrack(track, myStream));
@@ -181,8 +183,7 @@ export default function lobby() {
     }
 
     function handleAddStream(data) {
-        const peerFace = document.getElementById("peerFace");
-        peerFace.srcObject = data.stream;
+        peerFace.current.srcObject = data.stream;
     }
     function roomNameInputChange(e){
         setWelcomeInput(e.target.value);
@@ -213,7 +214,7 @@ export default function lobby() {
                             <BsCameraVideoOffFill onClick={handleCameraClick} className="group w-10 h-10 relative flex py-2 px-2 bg-indigo-600 text-2xl rounded-md hover:bg-indigo-700 hover:cursor-pointer"/>
                         }
                         <select ref={camerasSelect} onClick={handleCameraChange}/>
-                        <video id="peerFace" autoPlay playsInline width="400" height="400"/>
+                        <video ref={peerFace} autoPlay playsInline width="400" height="400"/>
                     </div>
                 </div>
             }

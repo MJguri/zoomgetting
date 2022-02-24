@@ -2,7 +2,7 @@ import {Fragment} from 'react'
 import {Menu, Transition} from '@headlessui/react'
 import {MenuIcon, XIcon} from '@heroicons/react/outline'
 import {UserIcon} from '@heroicons/react/solid'
-
+import Link from 'next/link';
 
 
 const navigation = [
@@ -52,19 +52,20 @@ export default function Navi() {
                                         <div className="hidden md:block">
                                             <div className="ml-10 flex items-baseline space-x-4">
                                                 {navigation.map((item) => (
-                                                    <a
-                                                        key={item.name}
-                                                        href={item.href}
-                                                        className={classNames(
-                                                            item.current
-                                                                ? 'bg-gray-900 text-white'
-                                                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                            'px-3 py-2 rounded-md text-sm font-medium'
-                                                        )}
-                                                        aria-current={item.current ? 'page' : undefined}
-                                                    >
-                                                        {item.name}
-                                                    </a>
+                                                    <Link href={item.href}>
+                                                        <a
+                                                            key={item.name}
+                                                            className={classNames(
+                                                                item.current
+                                                                    ? 'bg-gray-900 text-white'
+                                                                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                                'px-3 py-2 rounded-md text-sm font-medium'
+                                                            )}
+                                                            aria-current={item.current ? 'page' : undefined}
+                                                        >
+                                                            {item.name}
+                                                        </a>
+                                                    </Link>
                                                 ))}
                                             </div>
                                         </div>
@@ -103,15 +104,16 @@ export default function Navi() {
                                                         {userNavigation.map((item) => (
                                                             <Menu.Item key={item.name}>
                                                                 {({active}) => (
-                                                                    <a
-                                                                        href={item.href}
-                                                                        className={classNames(
-                                                                            active ? 'bg-gray-100' : '',
-                                                                            'block px-4 py-2 text-sm text-gray-700'
-                                                                        )}
-                                                                    >
-                                                                        {item.name}
-                                                                    </a>
+                                                                    <Link href={item.href}>
+                                                                        <a
+                                                                            className={classNames(
+                                                                                active ? 'bg-gray-100' : '',
+                                                                                'block px-4 py-2 text-sm text-gray-700'
+                                                                            )}
+                                                                        >
+                                                                            {item.name}
+                                                                        </a>
+                                                                    </Link>
                                                                 )}
                                                             </Menu.Item>
                                                         ))}
@@ -150,7 +152,7 @@ export default function Navi() {
                                                 aria-current={item.current ? 'page' : undefined}
                                             >
                                                 <div>
-                                                {item.name}
+                                                    {item.name}
                                                 </div>
                                             </Menu.Item>
                                         ))}
@@ -163,7 +165,7 @@ export default function Navi() {
                                                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
                                             >
                                                 <div>
-                                                {item.name}
+                                                    {item.name}
                                                 </div>
                                             </Menu.Item>
                                         ))}
