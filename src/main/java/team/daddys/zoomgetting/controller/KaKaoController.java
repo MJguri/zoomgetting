@@ -6,16 +6,15 @@ import com.google.gson.JsonParser;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Map;
 
+@RequestMapping("/api")
 @Controller
 public class KaKaoController {
     @GetMapping("kakaoLogin")
@@ -31,8 +30,8 @@ public class KaKaoController {
 
     // 카카오 연동정보 조회
     @PostMapping(value = "/login/oauth_kakao")
-    public @ResponseBody String oauthKakao(@RequestParam(value = "code", required = false) String code, Model model) throws Exception {
-
+    public @ResponseBody String oauthKakao(@RequestBody Map<String, String> param, Model model) throws Exception {
+        String code = param.getOrDefault("code", null);
         System.out.println("#########" + code);
         String access_Token = getAccessToken(code);
         System.out.println("###access_Token#### : " + access_Token);
@@ -67,7 +66,7 @@ public class KaKaoController {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=12dc1b7826f728c3482e75d5ea25f5a1");  //본인이 발급받은 key
-            sb.append("&redirect_uri=http://192.168.55.99:8085/kakaoLogin");     // 본인이 설정해 놓은 경로
+            sb.append("&redirect_uri=http://localhost:8085/api/kakaoLogin");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
