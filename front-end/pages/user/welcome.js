@@ -1,15 +1,18 @@
 import apiServer from "../../api/apiServer";
 import {Router, useRouter} from "next/router";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useQuery} from "react-query";
 
 export default function welcome() {
     // apiServer.post("login/getKaKaoAuthUrl", {})
-    const router = useRouter()
+    const router = useRouter();
+    const {code} = router.query;
 
     const {isLoading, error, data, isFetching} = useQuery("code", () => {
-        apiServer.post("login/getKaKaoAuthUrl", router.query?.code).then((res) => res.json())
-    })
+        const {data} = apiServer.post("/login/oauth_kakao", router.query)
+        return data
+
+    },{enabled: !!code})
     if(isLoading) return <div>loading</div>
     if (error) return <div>{`error : ${error?.message}`}</div>
     return (
