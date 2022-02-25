@@ -12,7 +12,12 @@ export default function welcome() {
         const {data} = apiServer.post("/login/oauth_kakao", router.query)
         return data
 
-    },{enabled: !!code})
+    },{
+        enabled: !!code,
+        onError:()=>{
+            console.log("error 발생");
+        }
+    })
     if(isLoading) return <div>loading</div>
     if (error) return <div>{`error : ${error?.message}`}</div>
     return (
