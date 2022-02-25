@@ -12,10 +12,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.simple.JSONObject;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
@@ -50,11 +47,12 @@ public class KaKaoController {
 
     // 카카오 연동정보 조회
     @RequestMapping(value="/login/oauth_kakao",produces="application/json",method= {RequestMethod.GET, RequestMethod.POST})
-    public String oauthKakao(@RequestParam("code")String code,
-                                               RedirectAttributes ra,
-                                               HttpSession session,
-                                               HttpServletResponse response,
-                                               Model model) throws Exception {
+    public ResponseEntity<?> oauthKakao(@RequestParam("code")String code
+//                                               RedirectAttributes ra,
+//                                               HttpSession session,
+//                                               HttpServletResponse response,
+//                                               Model model
+                                                ) throws Exception {
         System.out.println("#########" + code);
         String access_Token = getAccessToken(code);
         System.out.println("###access_Token#### : " + access_Token);
@@ -83,7 +81,7 @@ public class KaKaoController {
 //        System.out.println("###userInfo#### : " + userInfo.get("email"));
 //        System.out.println("###nickname#### : " + userInfo.get("nickname"));
 
-        return "loginSuccess";
+        return ResponseEntity.status(HttpStatus.OK).body(name);
     }
 
     // 카카오 로그인 access_token 리턴
