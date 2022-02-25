@@ -13,7 +13,7 @@ const navigation = [
     // {name: 'Reports', href: '#', current: false},
 ]
 const userNavigation = [
-    {name: '프로필', href: '#'},
+    {name: '프로필', href: '/user/detailInfo'},
     {name: '로그인', href: '/user/login'},
     // {name: 'Sign out', href: '#'},
 ]
@@ -52,9 +52,8 @@ export default function Navi() {
                                         <div className="hidden md:block">
                                             <div className="ml-10 flex items-baseline space-x-4">
                                                 {navigation.map((item) => (
-                                                    <Link href={item.href}>
+                                                    <Link href={item.href} key={item.name}>
                                                         <a
-                                                            key={item.name}
                                                             className={classNames(
                                                                 item.current
                                                                     ? 'bg-gray-900 text-white'
